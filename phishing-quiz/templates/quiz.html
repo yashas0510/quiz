@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Awareness Quiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Phishing Awareness Quiz</h1>
+        <form id="quiz-form">
+            {% for question in questions %}
+            <div class="question">
+                <p><strong>Q{{ question.id }}:</strong> {{ question.text }}</p>
+                {% for option in question.options %}
+                <label>
+                    <input type="radio" name="q{{ question.id }}" value="{{ option }}">
+                    {{ option }}
+                </label><br>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <button type="button" onclick="submitQuiz()">Submit</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
